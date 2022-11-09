@@ -4,19 +4,27 @@
 1. Create Ubuntu EC2 instance
 1. install AWSCLI
    ```sh
-    curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
-    sudo apt update
-    sudo apt install unzip python
-    unzip awscli-bundle.zip
-    #sudo apt-get install unzip - if you dont have unzip in your system
-    ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+    sudo apt install unzip python3
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+    ```
+    AWS version checking for confirmatio
+    ```sh
+    aws --version
     ```
 
 1. Install kubectl on ubuntu instance
    ```sh
-   curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-    chmod +x ./kubectl
-    sudo mv ./kubectl /usr/local/bin/kubectl
+   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+   echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
+   sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   ```
+   Version checking for confirmation
+   ```sh
+   kubectl version --client
+   kubectl version --client --output=yaml 
    ```
 
 1. Install kops on ubuntu instance
