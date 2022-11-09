@@ -37,16 +37,18 @@
 
 1. Attach IAM role to ubuntu instance
    ```sh
-   # Note: If you create IAM user with programmatic access then provide Access keys. Otherwise region information is enough
    aws configure
-    ```
+   ```
+   Note: If you create IAM user with programmatic access then provide Access keys. Otherwise region information is enough
 
 1. Create a Route53 private hosted zone (you can create Public hosted zone if you have a domain)
-   ```sh
-   Routeh53 --> hosted zones --> created hosted zone  
+
+   Routeh53 --> hosted zones --> created hosted zone
+   
    Domain Name: ramesh.in
+   
    Type: Private hosted zone for Amzon VPC
-   ```
+
 
 1. create an S3 bucket
    ```sh
