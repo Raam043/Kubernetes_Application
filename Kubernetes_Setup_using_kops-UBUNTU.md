@@ -45,7 +45,7 @@
 
    Routeh53 --> hosted zones --> created hosted zone
    
-   Domain Name: ramesh.in
+   Domain Name: ramesh.net
    
    Type: Private hosted zone for Amzon VPC
 
@@ -66,7 +66,7 @@
 
 1. Create kubernetes cluster definitions on S3 bucket
    ```sh
-   kops create cluster --cloud=aws --zones=ap-south-1b --name=ramesh.net --dns-zone=ramesh.in --dns private 
+   kops create cluster --cloud=aws --zones=us-east-2b --name=ramesh.net --dns-zone=ramesh.net --dns private 
     ```
 
 1. If you wish to update the cluster worker node sizes use below command 
@@ -76,7 +76,7 @@
 
 1. Create kubernetes cluser
     ```sh
-    kops update cluster ramesh.net --yes
+    kops update cluster --name ramesh.net --yes --admin
     ```
 
 1. Validate your cluster
@@ -91,7 +91,7 @@
 
 1. To delete cluster
     ```sh
-     kops delete cluster ramesh.net --yes
+    kops delete cluster ramesh.net --yes
     ```
    
 #### Deploying Nginx pods on Kubernetes
